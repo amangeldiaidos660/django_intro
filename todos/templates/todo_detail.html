@@ -2,13 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ todo.name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 </head>
-<body>
-    <h1>{{ todo.name }} {{ todo.surname }}</h1>
-    <p><strong>Description:</strong> {{ todo.description }}</p>
-    <p><strong>Dedline:</strong> {{ todo.due_date }} </p>
-    <p><strong>Status:</strong> {{ todo.status }}</p>
-    <a href="/todos/">Back to todo list</a>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4">
+            <h1 class="mb-3 text-center">{{ todo.name }}</h1>
+            <p><strong>Description:</strong> {{ todo.description }}</p>
+            <p><strong>Deadline:</strong> {{ todo.due_date }}</p>
+            <p><strong>Status:</strong> 
+                <span class="badge {% if todo.status %}bg-success{% else %}bg-danger{% endif %}">
+                    {% if todo.status %}Completed{% else %}Pending{% endif %}
+                </span>
+            </p>
+            <div class="text-center mt-3">
+                <a href="/todos/" class="btn btn-secondary">Back to Todo List</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

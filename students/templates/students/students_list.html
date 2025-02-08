@@ -2,27 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Students</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 </head>
-<body>
-    <h1>Students</h1>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Major</th>
-            <th>Year</th>
-            <th>Faculty</th>
-        </tr>
-        {% for student in students %}
-        <tr>
-            <td><a href="/students/{{ student.id }}/">{{ student.id }}</a></td>
-            <td>{{ student.name }} {{ student.surname }}</td>
-            <td>{{ student.major }}</td>
-            <td>{{ student.year_of_study }}</td>
-            <td>{{ student.faculty }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Students</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover shadow-sm bg-white">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Major</th>
+                        <th>Year</th>
+                        <th>Faculty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td><a href="/students/{{ student.id }}/" class="text-decoration-none">{{ student.id }}</a></td>
+                        <td>{{ student.name }} {{ student.surname }}</td>
+                        <td>{{ student.major }}</td>
+                        <td>{{ student.year_of_study }}</td>
+                        <td>{{ student.faculty }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

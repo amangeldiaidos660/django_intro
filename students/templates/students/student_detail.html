@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ student.name }} {{ student.surname }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 </head>
-<body>
-    <h1>{{ student.name }} {{ student.surname }}</h1>
-    <p><strong>Major:</strong> {{ student.major }}</p>
-    <p><strong>Year of Study:</strong> {{ student.year_of_study }}</p>
-    <p><strong>Faculty:</strong> {{ student.faculty }}</p>
-    <a href="/students/">Back to students</a>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h1 class="card-title">{{ student.name }} {{ student.surname }}</h1>
+                <p class="card-text"><strong>Major:</strong> {{ student.major }}</p>
+                <p class="card-text"><strong>Year of Study:</strong> {{ student.year_of_study }}</p>
+                <p class="card-text"><strong>Faculty:</strong> {{ student.faculty }}</p>
+                <a href="/students/" class="btn btn-primary">Back to Students</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
