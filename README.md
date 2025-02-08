@@ -1,1 +1,3 @@
 # django_intro
+
+python manage.py startapp ...
