@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo Lists</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Todo Lists</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Create New Todo List</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        {{ form.as_p }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Create</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo_list in lists %}
+                    <tr>
+                        <td>{{ todo_list.id }}</td>
+                        <td>
+                            <a href="{% url 'todo_list_detail' todo_list.id %}" class="text-decoration-none">
+                                {{ todo_list.title }}
+                            </a>
+                        </td>
+                        <td>{{ todo_list.description }}</td>
+                        <td>
+                            <a href="{% url 'todo_list_edit' todo_list.id %}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{% url 'todo_list_delete' todo_list.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center">No Todo Lists Found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
