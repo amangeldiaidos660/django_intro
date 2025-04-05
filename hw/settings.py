@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'subjects',
     'todos',
     'practice',
+    'reg',
 ]
 
 MIDDLEWARE = [

@@ -23,6 +23,7 @@ urlpatterns = [
     path('courses/', include('subjects.urls')),
     path('todos/', include('todos.urls')),
     path('blogs/', include('practice.urls')),
+    path('log/', include('reg.urls'))
 
     
 ]
